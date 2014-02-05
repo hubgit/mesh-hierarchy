@@ -15,6 +15,10 @@ class Tree {
 		while ($line = stream_get_line($input, null, "\n")) {
 			list($name, $id) = explode(';', $line);
 
+			if (preg_match('/^[A-Z]\d+/', $id)) {
+				$id = preg_replace('/^([A-Z])/', '$1.', $id);
+			}
+
 			$parts = explode('.', $id);
 			$depth = count($parts);
 
@@ -37,7 +41,7 @@ class Tree {
 		fclose($input);
 	}
 
-	public function build($id) {
+	public function build() {
 		$this->data = array(
 			'name' => 'mesh',
 			'children' => array_map(array($this, 'build_node'), $this->roots),
@@ -67,7 +71,8 @@ class Tree {
 }
 
 $tree = new Tree;
+$tree->read('mtrees2014-top.txt');
 $tree->read('mtrees2014.bin');
-$tree->build('A01');
+$tree->build();
 $tree->write('mtrees2014.json');
 
