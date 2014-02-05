@@ -1,0 +1,32 @@
+body {
+    font-family: "Helvetica", "sans-serif";
+}
+
+.name {
+	color: rgb(3, 22, 238);
+}
+
+.container a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0;
+    margin-left: 5px;
+}
+
+.container:hover a {
+	opacity: 0.5;
+}
+
+.container a:hover {
+	opacity: 1.0;
+}
+
+.heading {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.category {
+    margin-left: 20px;
+    display: none;
+}
